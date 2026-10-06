@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FAQ · CSVCOP</title>
-    <meta name="description" content="Short answers about CSVCOP, its two modules, compliance evidence and offline licensing." />
+    <title>Page not found · CSVCOP</title>
+    <meta name="description" content="This page does not exist." />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#08101f" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="CSVCOP" />
-    <meta property="og:title" content="FAQ · CSVCOP" />
-    <meta property="og:description" content="Short answers about CSVCOP, its two modules, compliance evidence and offline licensing." />
+    <meta property="og:title" content="Page not found · CSVCOP" />
+    <meta property="og:description" content="This page does not exist." />
     <meta property="og:image" content="https://prasanna708.github.io/csvcop-website-demo/img/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -81,7 +81,7 @@
             <a href="overview.html" class="">How it works</a>
             <a href="features.html" class="">Features</a>
             <a href="pricing.html" class="">Pricing</a>
-            <a href="faq.html" class="active">FAQ</a>
+            <a href="faq.html" class="">FAQ</a>
             <a href="contact.html" class="">Contact</a>
             <div class="nav-drawer-cta">
                 <a class="btn btn-primary" href="contact.html">Book a demo</a>
@@ -98,68 +98,21 @@
 </header>
 
 <main id="main">
-  <section class="hero page dark">
+  <section class="hero page dark" style="min-height: 78vh; display: grid; align-items: center;">
     <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="gridlines" aria-hidden="true"></div>
     <div class="container">
       <div class="hero-copy">
-        <p class="crumbs" data-enter><a href="index.html">Home</a><span>/</span>FAQ</p>
-        <h1 data-split>Questions, <span class="grad-text">answered</span></h1>
-        <p class="lead" data-enter style="--d: 0.45s">Short answers about the two modules, the evidence, and licensing on PCs that are never online.</p>
-        <div class="chips" data-enter style="--d: 0.6s; justify-content: center;">
-          <a href="#product">Product</a><a href="#network">Micro-segmentation</a><a href="#compliance">Compliance</a><a href="#licensing">Licensing</a>
+        <span class="pill" data-enter><span class="dot"></span>404</span>
+        <h1 data-split>This page <span class="grad-text">is not here.</span></h1>
+        <p class="lead" data-enter style="--d: 0.45s">It may have moved. Everything about CSVCOP starts from the home page.</p>
+        <div class="hero-actions" data-enter style="--d: 0.6s">
+          <a class="btn btn-primary btn-lg" href="index.html">Home <svg class="i arrow"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-glass btn-lg" href="products.html">Products</a>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="section">
-    <div class="container narrow">
-      <div class="acc-group" id="product" data-reveal="up">
-        <h3><svg class="i"><use href="#i-monitor"/></svg>Product &amp; deployment</h3>
-        <details class="acc"><summary>Which Windows versions are supported?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Windows 7 SP1 through Windows 11, 32- and 64-bit, with .NET Framework 4.5 or later, which is built into Windows 8 and later.</p></div></details>
-        <details class="acc"><summary>Does it need a server, a domain or the internet?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>No. CSVCOP runs entirely on the workstation: no server, no domain, no internet, not even to activate. It works alongside a domain if you have one.</p></div></details>
-        <details class="acc"><summary>Will it get in the way of our instrument software?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>The Windows controls act on the shell, not your applications. The few that reach every program say so in their description before you switch them on.</p></div></details>
-        <details class="acc"><summary>Can an operator stop it?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>No. The service runs as SYSTEM and Windows restarts it if stopped; a standard user cannot end the session agent. Any change is put back within 30 seconds and logged.</p></div></details>
-      </div>
-
-      <div class="acc-group" id="network" data-reveal="up">
-        <h3><svg class="i"><use href="#i-share"/></svg>Micro-segmentation</h3>
-        <details class="acc"><summary>What does it do?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>It decides which programs on the PC may talk to which machines, and refuses the rest: isolate the PC from its network, limit the internet to named programs, or both. Every refusal is recorded.</p></div></details>
-        <details class="acc"><summary>How do we know which rules a PC needs?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Switch on learning mode for a few days. CSVCOP records every connection the PC makes, and one click turns any of them into a rule.</p></div></details>
-        <details class="acc"><summary>Could a wrong rule cut the PC off?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Not for long. Before a tightening change, CSVCOP lists what will stop working. Once applied, it undoes itself unless it is committed within five minutes.</p></div></details>
-        <details class="acc"><summary>Does it need changes to our switches or VLANs?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>No. The policy lives in the firewall built into Windows on each PC, held there by the CSVCOP watchdog. No driver, no appliance.</p></div></details>
-      </div>
-
-      <div class="acc-group" id="compliance" data-reveal="up">
-        <h3><svg class="i"><use href="#i-clipboard"/></svg>Compliance</h3>
-        <details class="acc"><summary>What evidence does CSVCOP produce?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Up to nine reports, each a click from PDF with your logo and the Equipment ID: activity, control changes with their reasons, USB, the full audit trail and summaries &mdash; plus two network reports with Micro-segmentation.</p></div></details>
-        <details class="acc"><summary>Does CSVCOP validate our system?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>No tool can. CSVCOP controls the workstation and records what happens there, which makes that part of your compliance simple to prove.</p></div></details>
-        <details class="acc"><summary>Can you map our auditor&rsquo;s checklist?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Yes. Send it to us and we return it with the control numbers filled in; they are the numbers shown in the application.</p></div></details>
-      </div>
-
-      <div class="acc-group" id="licensing" data-reveal="up">
-        <h3><svg class="i"><use href="#i-key"/></svg>Licensing</h3>
-        <details class="acc"><summary>How do we buy CSVCOP?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Through our authorised distributor, SEK RAW Business Services: quotations, purchase orders, invoicing and renewals. Details on the <a href="pricing.html">pricing page</a>.</p></div></details>
-        <details class="acc"><summary>How does activation work without the internet?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>The PC shows a machine key; the licensing portal returns a signed licence key for it, which you paste back in. Any device with a browser can reach the portal.</p></div></details>
-        <details class="acc"><summary>Which modules does a licence include?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Every licence includes <span class="nb">21 CFR Part 11</span> Controls. Micro-segmentation is added for every workstation or a set number; customers give more PCs the module from their portal, within their seats.</p></div></details>
-        <details class="acc"><summary>What happens when a licence expires?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="body"><p>Warnings start 30 days before. After the end date everything keeps working for 14 days; then the controls and the network policy switch off until a renewed key is pasted. Nothing configured is lost.</p></div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="cta" data-reveal="zoom">
-      <div class="aurora" aria-hidden="true"><i></i><i></i></div>
-      <h2>See both modules on your own workstation</h2>
-      <p>Bring the checkpoint your auditor raised. We will show you the control, the rule and the evidence.</p>
-      <div class="hero-actions">
-        <a class="btn btn-light btn-lg" href="contact.html">Book a demo <svg class="i arrow"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-glass btn-lg" href="products.html">Explore the products</a>
-      </div>
-    </div>
-  </section>
-
 
 </main>
 

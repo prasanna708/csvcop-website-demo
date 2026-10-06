@@ -1,12 +1,32 @@
-# CSVCOP website: complete demo for review
+# CSVCOP website (demo for review)
 
-The whole CSVCOP website, rebuilt for review before any of it goes into the live site:
+The CSVCOP marketing site, redesigned, for review before it replaces the live one.
 
-- **Home**, **Products** (new), **Overview**, **Features**, **Pricing**, **FAQ** and **Contact**, linked to each other only.
-- The two modules, 21 CFR Part 11 Controls and Micro-segmentation, with equal weight on every page.
-- Real screenshots of the CSVCOP application, showing a sample HPLC workstation (no customer data).
-- Motion: entrance on load, sections that reveal as you scroll, a sticky product tour, screenshot galleries, animated module drawings, marquees and a reading-progress bar. All of it is switched off for visitors who ask their system for less motion.
+- **Pages:** Home, Products, How it works, Features, Pricing, FAQ, Contact, and a 404 page, linked only to each other.
+- **The two modules side by side:** 21 CFR Part 11 Controls (blue) and Micro-segmentation (teal), with equal weight.
+- **Real screens of the CSVCOP application**, shown in 3D:
+  - a hero whose windows straighten as you scroll;
+  - a rotating carousel;
+  - stacks of screens that deal themselves.
+  They show a sample HPLC workstation, not customer data.
+- **Short copy:** what each module does and the evidence it produces, nothing more.
 
-This demo is not the live site: Login and the contact form only say what the live site would do, and the pages ask search engines not to index them.
+## Production checklist
 
-Plain HTML, CSS and JavaScript. `python source/build.py` writes the seven pages from `source/` (the shared frame in `shell.html`, each page's contents in `pages/`, repeated pieces in `partials/`).
+- Plain HTML, CSS and JavaScript (`css/site.css`, `js/site.js`, no libraries).
+- Screens as lossless WebP with PNG fallback, lazy-loaded, with fixed dimensions.
+- Keyboard and screen-reader friendly: a skip link, labelled controls, and a carousel you can drive with the arrow keys.
+- Every animation is switched off for visitors who ask their system for less motion.
+- Works from 360 px phones to wide desktops, with no sideways scrolling.
+
+## Before this goes live
+
+Remove `<meta name="robots" content="noindex, nofollow">` from `source/shell.html`, point `og:image` at the live domain, and remove the "Demo" badge. The Login button and the contact form then need wiring to the real portal and enquiry endpoint.
+
+## Build
+
+`python source/build.py` writes the pages from `source/`:
+- `shell.html` is the frame of every page;
+- `pages/` holds each page's content;
+- `partials/` holds the repeated pieces;
+- `sprite.svg` holds the icons.

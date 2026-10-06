@@ -3,49 +3,57 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{TITLE}} &middot; CSVCOP</title>
+    <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}" />
     <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#08101f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CSVCOP" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
+    <meta property="og:image" content="https://prasanna708.github.io/csvcop-website-demo/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="apple-touch-icon" href="img/csvcop-mark.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/website.css" />
-    <link rel="stylesheet" href="css/demo.css" />
-    <link rel="stylesheet" href="css/motion.css" />
+    <link rel="stylesheet" href="css/site.css" />
     <script>document.documentElement.className += " js";</script>
 </head>
-<body class="page-glow">
+<body>
+<a class="skip" href="#main">Skip to content</a>
 {{SPRITE}}
-<div class="scroll-progress" aria-hidden="true"></div>
 <header class="site-header">
     <div class="container nav">
         <a class="logo" href="index.html" aria-label="CSVCOP home">
-            <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="44" height="44" />
+            <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="40" height="40" />
             <span>CSVCOP<small>COMPLIANCE CHECKLIST</small></span>
         </a>
         <nav class="nav-links" id="navLinks" aria-label="Main">
-            <a href="index.html" class="{{ON_index}}">Home</a>
             <a href="products.html" class="{{ON_products}}">Products</a>
-            <a href="overview.html" class="{{ON_overview}}">Overview</a>
+            <a href="overview.html" class="{{ON_overview}}">How it works</a>
             <a href="features.html" class="{{ON_features}}">Features</a>
             <a href="pricing.html" class="{{ON_pricing}}">Pricing</a>
             <a href="faq.html" class="{{ON_faq}}">FAQ</a>
             <a href="contact.html" class="{{ON_contact}}">Contact</a>
             <div class="nav-drawer-cta">
-                <a class="btn btn-primary" href="contact.html">Get in touch</a>
-                <a class="btn btn-ghost" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
+                <a class="btn btn-primary" href="contact.html">Book a demo</a>
+                <a class="btn btn-glass" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
             </div>
         </nav>
         <div class="nav-cta">
-            <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
-            <a class="btn btn-ghost btn-sm" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
+            <a class="btn btn-glass btn-sm" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
+            <a class="btn btn-primary btn-sm" href="contact.html">Book a demo</a>
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
         </div>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
 </header>
 
-<main>
+<main id="main">
 {{BODY}}
 </main>
 
@@ -54,36 +62,35 @@
         <div class="foot-grid">
             <div>
                 <a class="logo" href="index.html">
-                    <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="44" height="44" />
+                    <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="40" height="40" />
                     <span>CSVCOP<small>COMPLIANCE CHECKLIST</small></span>
                 </a>
-                <p>Two modules for regulated laboratory workstations: <span class="nb">21 CFR Part 11</span> Controls, which locks Windows down and keeps it that way, and Micro-segmentation, which decides which programs may talk to which machines &mdash; by DataBricks Technologies.</p>
+                <p>Lockdown and micro-segmentation for regulated laboratory workstations, by DataBricks Technologies.</p>
             </div>
             <div>
                 <h4>Products</h4>
                 <ul>
                     <li><a href="products.html#part11"><span class="nb">21 CFR Part 11</span> Controls</a></li>
                     <li><a href="products.html#micro-segmentation">Micro-segmentation</a></li>
-                    <li><a href="products.html#coverage">What each module covers</a></li>
-                    <li><a href="products.html#licensing">Licensing</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Explore</h4>
+                <h4>Learn</h4>
                 <ul>
-                    <li><a href="overview.html">Overview</a></li>
-                    <li><a href="features.html">Features</a></li>
+                    <li><a href="overview.html">How it works</a></li>
                     <li><a href="features.html#controls">All 97 controls</a></li>
-                    <li><a href="pricing.html">Pricing</a></li>
                     <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div>
                 <h4>Get in touch</h4>
                 <ul>
-                    <li>Corporate Office<br />C 206, 2nd Floor, Business Park<br />PDPU Road, Raysan<br />Gandhinagar, Gujarat 382421, India</li>
                     <li><a href="mailto:sales&#64;databricks.online">sales&#64;databricks.online</a></li>
-                    <li>Pricing &amp; purchase: <a href="pricing.html">SEK RAW Business Services</a></li>
+                    <li>C 206, 2nd Floor, Business Park, PDPU Road, Raysan, Gandhinagar, Gujarat 382421, India</li>
+                    <li>Purchase: <a href="pricing.html">SEK RAW Business Services</a></li>
                 </ul>
             </div>
         </div>
@@ -95,7 +102,6 @@
 </footer>
 
 <div class="demo-badge">DEMO<span>not the live site</span></div>
-<script src="js/website.js"></script>
-<script src="js/motion.js"></script>
+<script src="js/site.js" defer></script>
 </body>
 </html>
