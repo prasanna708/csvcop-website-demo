@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/website.css" />
     <link rel="stylesheet" href="css/demo.css" />
+    <link rel="stylesheet" href="css/motion.css" />
     <script>document.documentElement.className += " js";</script>
 </head>
 <body class="page-glow">
@@ -56,8 +57,10 @@
   <symbol id="i-wifi-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></symbol>
 </svg>
 
+<div class="scroll-progress" aria-hidden="true"></div>
 <header class="site-header">
     <div class="container nav">
         <a class="logo" href="index.html" aria-label="CSVCOP home">
@@ -67,83 +70,63 @@
         <nav class="nav-links" id="navLinks" aria-label="Main">
             <a href="index.html" class="active">Home</a>
             <a href="products.html" class="">Products</a>
-            <a href="https://www.csvcop.com/overview">Overview</a>
-            <a href="https://www.csvcop.com/features">Features</a>
-            <a href="https://www.csvcop.com/pricing">Pricing</a>
-            <a href="https://www.csvcop.com/faq">FAQ</a>
-            <a href="https://www.csvcop.com/contact">Contact</a>
+            <a href="overview.html" class="">Overview</a>
+            <a href="features.html" class="">Features</a>
+            <a href="pricing.html" class="">Pricing</a>
+            <a href="faq.html" class="">FAQ</a>
+            <a href="contact.html" class="">Contact</a>
             <div class="nav-drawer-cta">
-                <a class="btn btn-primary" href="https://www.csvcop.com/contact">Get in touch</a>
-                <a class="btn btn-ghost" href="https://www.csvcop.com/Account/Login">Login</a>
+                <a class="btn btn-primary" href="contact.html">Get in touch</a>
+                <a class="btn btn-ghost" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
             </div>
         </nav>
         <div class="nav-cta">
-            <a class="btn btn-primary btn-sm" href="https://www.csvcop.com/contact">Get in touch</a>
-            <a class="btn btn-ghost btn-sm" href="https://www.csvcop.com/Account/Login">Login</a>
+            <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+            <a class="btn btn-ghost btn-sm" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
         </div>
     </div>
 </header>
 
 <main>
-  <!-- Hero: both modules -->
+  <!-- Hero: both modules, in real windows -->
   <section class="hero">
+    <div class="blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Two modules &middot; one workstation</span>
-        <h1>Every control enforced. <span class="grad">Every connection decided.</span></h1>
-        <p class="lead">CSVCOP protects a laboratory workstation with two modules. <span class="m-a"><span class="nb">21 CFR Part 11</span> Controls</span> locks Windows down and puts back any change within 30 seconds. <span class="m-b">Micro-segmentation</span> decides which programs may talk to which machines. Both keep a tamper-evident audit trail, and neither needs the internet.</p>
-        <div class="hero-actions">
+        <span class="eyebrow" data-enter style="--d: 0.05s">Two modules &middot; one workstation</span>
+        <h1 data-enter style="--d: 0.15s">Every control enforced. <span class="grad shine-text">Every connection decided.</span></h1>
+        <p class="lead" data-enter style="--d: 0.3s">CSVCOP protects a laboratory workstation with two modules. <span class="m-a"><span class="nb">21 CFR Part 11</span> Controls</span> locks Windows down and puts back any change within 30 seconds. <span class="m-b">Micro-segmentation</span> decides which programs may talk to which machines. Both keep a tamper-evident audit trail, and neither needs the internet.</p>
+        <div class="hero-actions" data-enter style="--d: 0.42s">
           <a class="btn btn-primary btn-lg" href="products.html">Explore the products <svg class="i arrow"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-ghost btn-lg" href="https://www.csvcop.com/contact">Request a demo</a>
+          <a class="btn btn-ghost btn-lg" href="#tour">See it in the product</a>
         </div>
-        <ul class="hero-points">
+        <ul class="hero-points" data-enter style="--d: 0.54s">
           <li><span class="tick"><svg class="i i-sm"><use href="#i-check"/></svg></span>Built for <span class="nb">21 CFR Part 11</span> laboratories</li>
           <li><span class="tick"><svg class="i i-sm"><use href="#i-check"/></svg></span>Works fully offline</li>
           <li><span class="tick"><svg class="i i-sm"><use href="#i-check"/></svg></span>Windows 7 SP1 to 11</li>
         </ul>
       </div>
-
-      <div class="duo reveal">
-        <div class="mock mock-a">
-          <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span class="mock-title">CSVCOP &middot; Configure Controls</span></div>
-          <div class="mock-body">
-            <div class="mock-side"><b>CSVCOP</b><span>Dashboard</span><span class="on">Configure Controls</span><span>User Master</span><span>USB Control</span><span>Micro-segmentation</span><span>Reports</span><span>Settings</span></div>
-            <div class="mock-main">
-              <h4>Configure Controls <small>97 controls</small></h4>
-              <div class="ctl"><span><em>01</em>Enforce password history</span><span class="sw"></span></div>
-              <div class="ctl"><span><em>59</em>Remove Task Manager</span><span class="sw"></span></div>
-              <div class="ctl"><span><em>62</em>All removable storage: deny all access</span><span class="sw"></span></div>
-              <div class="ctl"><span><em>94</em>Block copy, paste, delete and rename keys</span><span class="sw"></span></div>
-              <div class="ctl"><span><em>97</em>Block copy and paste: clear the clipboard</span><span class="sw"></span></div>
-            </div>
-          </div>
+      <div class="hero-visual" data-tilt data-enter="zoom" style="--d: 0.3s">
+        <div class="tilt-inner hero-shots">
+          <figure class="shot back" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/configure-controls.png" alt="CSVCOP Configure Controls, 72 of the 76 controls that apply switched on" data-caption="Configure Controls: 72 of the 76 controls that apply to this Windows version switched on." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure>
+          <figure class="shot front" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/ms-observed-traffic.png" alt="Micro-segmentation Observed traffic, with allowed and blocked connections" data-caption="Micro-segmentation, Observed traffic: what the PC talked to, allowed and blocked." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure>
+          <div class="float float-a bob"><span class="ico green"><svg class="i"><use href="#i-refresh"/></svg></span><span><b>Healed in 30 s</b><small>Task Manager put back and logged</small></span></div>
+          <div class="float float-b bob late"><span class="ico teal"><svg class="i"><use href="#i-share"/></svg></span><span><b>Connection refused</b><small>updater.exe &rarr; internet, recorded</small></span></div>
         </div>
-        <div class="mock mock-b">
-          <div class="mock-bar"><span class="dots"><i></i><i></i><i></i></span><span class="mock-title">Micro-segmentation</span><span class="mock-pill teal">internet restricted</span></div>
-          <div class="row"><span class="av green"><svg class="i"><use href="#i-server"/></svg></span><span class="grow"><b>chromatography.exe</b><small>10.20.4.15:1433 &middot; data server</small></span><span class="tag green">Allowed</span></div>
-          <div class="row"><span class="av green"><svg class="i"><use href="#i-refresh"/></svg></span><span class="grow"><b>svchost.exe (wuauserv)</b><small>Windows Update &middot; 443 TCP</small></span><span class="tag green">Allowed</span></div>
-          <div class="row"><span class="av red"><svg class="i"><use href="#i-globe"/></svg></span><span class="grow"><b>unknown.exe</b><small>203.0.113.10:443 TCP &middot; no rule</small></span><span class="tag red">Blocked</span></div>
-        </div>
-        <div class="float float-a"><span class="ico green"><svg class="i"><use href="#i-refresh"/></svg></span><span><b>Healed in 30 s</b><small>Task Manager put back and logged</small></span></div>
-        <div class="float float-b"><span class="ico teal"><svg class="i"><use href="#i-share"/></svg></span><span><b>Connection refused</b><small>unknown.exe, recorded</small></span></div>
       </div>
     </div>
   </section>
 
-  <!-- Made for -->
-  <section class="strip">
-    <div class="container">
-      <p class="strip-label">Made for regulated workstations and the networks they sit on</p>
-      <div class="tiles reveal">
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-clipboard"/></svg></span><span class="nb">21 CFR Part 11</span></div>
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-layers"/></svg></span>GxP laboratories</div>
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-cpu"/></svg></span>Instrument PCs</div>
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-share"/></svg></span>Lab networks</div>
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-wifi-off"/></svg></span>Air-gapped sites</div>
-        <div class="tile"><span class="ti"><svg class="i"><use href="#i-monitor"/></svg></span>Windows 7 &ndash; 11</div>
-      </div>
-    </div>
+  <!-- The two modules, in motion -->
+  <section class="container marquees" aria-label="Examples from the two modules">
+    <p class="marquee-label reveal">97 controls on one side &middot; every connection decided on the other</p>
+    <div class="marquee a"><div class="marquee-track"><span class="mq"><span class="dot"></span><b>01</b>Enforce password history</span><span class="mq"><span class="dot"></span><b>22</b>Remove Shut down and Restart</span><span class="mq"><span class="dot"></span><b>34</b>Remove Run menu</span><span class="mq"><span class="dot"></span><b>56</b>Prevent access to the command prompt</span><span class="mq"><span class="dot"></span><b>59</b>Remove Task Manager</span><span class="mq"><span class="dot"></span><b>62</b>All removable storage: deny all access</span><span class="mq"><span class="dot"></span><b>67</b>Prohibit changing the system time</span><span class="mq"><span class="dot"></span><b>80</b>Account lockout threshold</span><span class="mq"><span class="dot"></span><b>83</b>Audit policy change</span><span class="mq"><span class="dot"></span><b>89</b>Remove Map Network Drive</span><span class="mq"><span class="dot"></span><b>92</b>Disable Registry Editor</span><span class="mq"><span class="dot"></span><b>94</b>Block copy, paste, delete and rename keys</span><span class="mq"><span class="dot"></span><b>95</b>Block dragging files</span><span class="mq"><span class="dot"></span><b>97</b>Clear the clipboard</span>
+<span class="mq"><span class="dot"></span><b>01</b>Enforce password history</span><span class="mq"><span class="dot"></span><b>22</b>Remove Shut down and Restart</span><span class="mq"><span class="dot"></span><b>34</b>Remove Run menu</span><span class="mq"><span class="dot"></span><b>56</b>Prevent access to the command prompt</span><span class="mq"><span class="dot"></span><b>59</b>Remove Task Manager</span><span class="mq"><span class="dot"></span><b>62</b>All removable storage: deny all access</span><span class="mq"><span class="dot"></span><b>67</b>Prohibit changing the system time</span><span class="mq"><span class="dot"></span><b>80</b>Account lockout threshold</span><span class="mq"><span class="dot"></span><b>83</b>Audit policy change</span><span class="mq"><span class="dot"></span><b>89</b>Remove Map Network Drive</span><span class="mq"><span class="dot"></span><b>92</b>Disable Registry Editor</span><span class="mq"><span class="dot"></span><b>94</b>Block copy, paste, delete and rename keys</span><span class="mq"><span class="dot"></span><b>95</b>Block dragging files</span><span class="mq"><span class="dot"></span><b>97</b>Clear the clipboard</span>
+</div></div>
+    <div class="marquee b reverse"><div class="marquee-track"><span class="mq"><span class="dot"></span>chromatography.exe &rarr; data server</span><span class="mq"><span class="dot"></span>Internet for named programs only</span><span class="mq"><span class="dot"></span>Isolate from the local network</span><span class="mq"><span class="dot"></span>Refuse incoming connections</span><span class="mq"><span class="dot"></span>Vendor access Mon&ndash;Fri 09:00&ndash;17:00</span><span class="mq"><span class="dot"></span>Learning mode: every connection recorded</span><span class="mq"><span class="dot"></span>updater.exe &rarr; internet: refused</span><span class="mq"><span class="dot"></span>Five minutes to commit</span><span class="mq"><span class="dot"></span>SQL Server preset</span><span class="mq"><span class="dot"></span>File share preset</span><span class="mq"><span class="dot"></span>Windows Update stays open</span><span class="mq"><span class="dot"></span>Rules put back within 30 s</span><span class="mq"><span class="dot"></span>Every refusal in the report</span>
+<span class="mq"><span class="dot"></span>chromatography.exe &rarr; data server</span><span class="mq"><span class="dot"></span>Internet for named programs only</span><span class="mq"><span class="dot"></span>Isolate from the local network</span><span class="mq"><span class="dot"></span>Refuse incoming connections</span><span class="mq"><span class="dot"></span>Vendor access Mon&ndash;Fri 09:00&ndash;17:00</span><span class="mq"><span class="dot"></span>Learning mode: every connection recorded</span><span class="mq"><span class="dot"></span>updater.exe &rarr; internet: refused</span><span class="mq"><span class="dot"></span>Five minutes to commit</span><span class="mq"><span class="dot"></span>SQL Server preset</span><span class="mq"><span class="dot"></span>File share preset</span><span class="mq"><span class="dot"></span>Windows Update stays open</span><span class="mq"><span class="dot"></span>Rules put back within 30 s</span><span class="mq"><span class="dot"></span>Every refusal in the report</span>
+</div></div>
   </section>
 
   <!-- The products -->
@@ -154,8 +137,8 @@
         <h2>Two modules, one protected workstation</h2>
         <p>Lock the workstation down with <span class="nb">21 CFR Part 11</span> Controls. Decide what it may talk to with Micro-segmentation. Both run on the same PC, from the same installer, under the same licence key.</p>
       </div>
-      <div class="products">
-      <article class="product a reveal">
+      <div class="products stagger">
+      <article class="product a">
         <div class="product-top">
           <span class="product-ico"><svg class="i"><use href="#i-shield"/></svg></span>
           <span class="product-label">Module 1 &middot; in every licence</span>
@@ -176,11 +159,12 @@
           </div>
           <div class="product-actions">
             <a class="btn btn-primary" href="products.html#part11">Explore the module <svg class="i arrow"><use href="#i-arrow"/></svg></a>
-            <a class="link-arrow" href="https://www.csvcop.com/features#controls">All 97 controls <span>&rarr;</span></a>
+            <a class="link-arrow" href="features.html#controls">All 97 controls <span>&rarr;</span></a>
           </div>
         </div>
       </article>
-      <article class="product b reveal">
+
+      <article class="product b">
         <div class="product-top">
           <span class="product-ico"><svg class="i"><use href="#i-share"/></svg></span>
           <span class="product-label">Module 2 &middot; for all or chosen PCs</span>
@@ -191,123 +175,160 @@
           <ul class="checks">
             <li><svg class="i"><use href="#i-check"/></svg>Learning mode shows what the PC really talks to before anything is blocked</li>
             <li><svg class="i"><use href="#i-check"/></svg>Rules by program, address, port and protocol, with presets and schedules</li>
-            <li><svg class="i"><use href="#i-check"/></svg>A tightening change undoes itself unless confirmed within five minutes</li>
+            <li><svg class="i"><use href="#i-check"/></svg>A tightening change undoes itself unless committed within five minutes</li>
             <li><svg class="i"><use href="#i-check"/></svg>Every refused connection recorded, in two reports of its own</li>
           </ul>
           <div class="product-stats">
-            <div><b>5 min</b><span>to confirm a change</span></div>
+            <div><b>5 min</b><span>to commit a change</span></div>
             <div><b>30 s</b><span>to put a rule back</span></div>
             <div><b>2</b><span>reports</span></div>
           </div>
           <div class="product-actions">
             <a class="btn btn-teal" href="products.html#micro-segmentation">Explore the module <svg class="i arrow"><use href="#i-arrow"/></svg></a>
-            <a class="link-arrow" href="https://www.csvcop.com/features#network">In detail <span>&rarr;</span></a>
+            <a class="link-arrow" href="features.html#micro-segmentation">In detail <span>&rarr;</span></a>
           </div>
         </div>
       </article>
+
       </div>
-    <div class="shared reveal">
+    <div class="shared stagger">
       <div><span class="sh-ico"><svg class="i"><use href="#i-package"/></svg></span><span><b>One installer</b><small>one MSI per workstation</small></span></div>
       <div><span class="sh-ico"><svg class="i"><use href="#i-server"/></svg></span><span><b>One watchdog</b><small>holds controls and rules</small></span></div>
       <div><span class="sh-ico"><svg class="i"><use href="#i-key"/></svg></span><span><b>One licence key</b><small>activated offline</small></span></div>
       <div><span class="sh-ico"><svg class="i"><use href="#i-file"/></svg></span><span><b>One audit trail</b><small>both modules, one record</small></span></div>
     </div>
+
     </div>
   </section>
 
-  <!-- Stories: the modules take turns -->
-  <section class="section">
+  <!-- Product tour: real screens, the modules taking turns -->
+  <section class="section" id="tour" style="scroll-margin-top: 70px;">
     <div class="container">
-
-      <div class="split reveal">
-        <div>
-          <span class="eyebrow"><span class="nb">21 CFR Part 11</span> Controls</span>
-          <h2>The configuration you applied is the configuration the machine has</h2>
-          <p>The CSVCOP Watchdog runs as SYSTEM and starts before anyone signs in. Every half minute it compares the live state of each control with the encrypted master, restores what differs, and logs it as a tamper event.</p>
-          <ul class="checks">
-            <li><svg class="i"><use href="#i-check"/></svg>Registry policy, security policy and user rights, in every user profile</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Tells your own changes from tampering, so there are no false alarms</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Restores its own master from a protected backup if it is deleted</li>
-          </ul>
+      <div class="section-head reveal">
+        <span class="eyebrow">See it in the product</span>
+        <h2>Real screens from the CSVCOP application</h2>
+        <p>A laboratory PC set up with both modules: the lockdown, the network, and the evidence that ties them together. Click any screen to see it full size.</p>
+      </div>
+      <div class="tour">
+        <div class="tour-steps">
+          <div class="tour-step" data-module="a" data-badge="21 CFR Part 11 Controls" data-caption="<b>Dashboard.</b> Compliance, tamper alerts, blocked attempts and the network at a glance.">
+            <span class="eyebrow">01 &middot; Dashboard</span>
+            <h3>Everything on one screen</h3>
+            <p>Controls switched on, users, USB devices, security events, tamper alerts and blocked attempts &mdash; and, with Micro-segmentation, the network policy and the connections it refused.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Green when every control is in compliance</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Recent activity, with the account behind each change</li>
+              <li><svg class="i"><use href="#i-check"/></svg>The Equipment ID on screen and on every report</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/dashboard.png" alt="CSVCOP Dashboard" data-caption="Dashboard: compliance, tamper alerts, blocked attempts and the network at a glance." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="a" data-badge="21 CFR Part 11 Controls" data-caption="<b>Configure Controls.</b> 97 numbered controls, each switched on by itself.">
+            <span class="eyebrow">02 &middot; Configure Controls</span>
+            <h3>97 controls, each in plain words</h3>
+            <p>Switch on what your SOP asks for. Each control says what it does and when it takes effect. Save &amp; Apply asks for the password again, and switching a control off asks for the reason.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Only the controls that apply to this Windows version count</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Takes effect: at once, at the next sign-in, or when Explorer restarts</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Held in place by the watchdog every 30 seconds</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/configure-controls.png" alt="CSVCOP Configure Controls" data-caption="Configure Controls: 97 numbered controls, each switched on by itself." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="a" data-badge="21 CFR Part 11 Controls" data-caption="<b>USB Control.</b> Blocking is on; two devices are let in during their schedule.">
+            <span class="eyebrow">03 &middot; USB Control</span>
+            <h3>USB storage, by device</h3>
+            <p>Block USB storage, then let in exactly the devices your instruments need &mdash; recognised by their hardware identity, all the time or on a schedule.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>The device ID read from the device that is plugged in</li>
+              <li><svg class="i"><use href="#i-check"/></svg>A weekday window per device, if it needs one</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Every addition and removal in the audit trail</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/usb-control.png" alt="CSVCOP USB Control" data-caption="USB Control: blocking is on; two devices are let in during their schedule." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="b" data-badge="Micro-segmentation" data-caption="<b>Observed traffic.</b> What the PC talked to, how often and when, allowed and blocked.">
+            <span class="eyebrow eb-b">04 &middot; Observed traffic</span>
+            <h3>See what the PC really talks to</h3>
+            <p>Learning mode records every connection the PC makes: the program, the address, the port, the protocol, how often and when. One click turns a line into a rule.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Allow this, allow the program to the internet, or allow all to one host</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Blocked only, allowed only or everything; today, 7 or 30 days</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Rules made from evidence, not guesswork</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/ms-observed-traffic.png" alt="Micro-segmentation Observed traffic" data-caption="Observed traffic: what the PC talked to, how often and when, allowed and blocked." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="b" data-badge="Micro-segmentation" data-caption="<b>Rules.</b> Seven rules for an HPLC workstation, one of them with a weekday window.">
+            <span class="eyebrow eb-b">05 &middot; Rules</span>
+            <h3>Rules in plain words</h3>
+            <p>Allow or block by program or Windows service, address, port and protocol. Presets cover a file share, SQL Server, a printer and Remote Desktop; a schedule limits a rule to its window.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>In force: Yes, Idle, or Not now outside its window</li>
+              <li><svg class="i"><use href="#i-check"/></svg>A block rule works on its own, even with no restriction on</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Every rule added, changed or removed is logged</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/ms-rules.png" alt="Micro-segmentation Rules" data-caption="Rules: seven rules for an HPLC workstation, one of them with a weekday window." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="b" data-badge="Micro-segmentation" data-caption="<b>Restrictions.</b> Just after Save &amp; Apply: in force, counting down to Commit.">
+            <span class="eyebrow eb-b">06 &middot; Restrictions</span>
+            <h3>Five minutes to commit</h3>
+            <p>Isolate the PC from its network, restrict the internet to named programs, or both. A tightening change is in force at once, and undoes itself unless it is committed within five minutes.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Before applying: the connections of the last 7 days that will stop working</li>
+              <li><svg class="i"><use href="#i-check"/></svg>A warning when the session looks remote</li>
+              <li><svg class="i"><use href="#i-check"/></svg>DHCP, DNS, time and Windows Update stay open</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/ms-restrictions.png" alt="Micro-segmentation Restrictions, waiting for Commit" data-caption="Restrictions: just after Save &amp; Apply, in force and counting down to Commit." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="a" data-badge="21 CFR Part 11 Controls" data-caption="<b>Control Change History.</b> Every control switched, by whom, when and why.">
+            <span class="eyebrow">07 &middot; Control Change History</span>
+            <h3>Who changed what, and why</h3>
+            <p>Every control switched on or off, by whom and when, with the reason that was given &mdash; and every change the watchdog reversed, with the value it found.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Change requests and CAPA numbers in the record</li>
+              <li><svg class="i"><use href="#i-check"/></svg>Tamper events written by the service, not the operator</li>
+              <li><svg class="i"><use href="#i-check"/></svg>A click from PDF, with your logo and the Equipment ID</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/report-control-changes.png" alt="CSVCOP Control Change History report" data-caption="Control Change History: every control switched, by whom, when and why." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
+          <div class="tour-step" data-module="b" data-badge="Micro-segmentation" data-caption="<b>Micro-segmentation Activity.</b> Policy changes, commits, refusals and firewall tamper.">
+            <span class="eyebrow eb-b">08 &middot; Micro-segmentation Activity</span>
+            <h3>Every refusal on record</h3>
+            <p>Policy saved and committed, rules added, connections refused and firewall rules put back after tampering &mdash; one report, a click from PDF.</p>
+            <ul class="checks">
+              <li><svg class="i"><use href="#i-check"/></svg>Program, address, port and protocol of each refusal</li>
+              <li><svg class="i"><use href="#i-check"/></svg>The policy in force, in its own report</li>
+              <li><svg class="i"><use href="#i-check"/></svg>In the same audit trail as every other change</li>
+            </ul>
+            <div class="inline-shot"><figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div><img src="img/screens/report-network-activity.png" alt="Micro-segmentation Activity report" data-caption="Micro-segmentation Activity: policy changes, commits, refusals and firewall tamper." width="1350" height="781" loading="lazy"><span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span></figure></div>
+          </div>
         </div>
-        <div class="panel">
-          <div class="panel-head"><span>Security log &middot; tamper events</span><span class="tag green">Watchdog running</span></div>
-          <div class="row"><span class="av amber">59</span><span class="grow"><b>Remove Task Manager</b><small>found 0, expected 1 &middot; restored</small></span><span class="when">14:48:08</span></div>
-          <div class="row"><span class="av amber">62</span><span class="grow"><b>All removable storage: deny all access</b><small>found 0, expected 1 &middot; restored</small></span><span class="when">14:48:08</span></div>
-          <div class="row"><span class="av amber">56</span><span class="grow"><b>Prevent access to the command prompt</b><small>policy value deleted &middot; restored</small></span><span class="when">11:02:37</span></div>
-          <div class="row"><span class="av green">OK</span><span class="grow"><b>Compliance check</b><small>97 controls verified &middot; heartbeat written</small></span><span class="when">every 30 s</span></div>
+        <div class="tour-stage">
+          <div class="tour-frame">
+            <span class="tour-badge">21 CFR Part 11 Controls</span>
+            <figure class="shot" data-zoom><div class="shot-bar"><span class="app"><img class="app-ico" src="img/favicon.png" alt="">CSVCOP</span><span class="win" aria-hidden="true"><i>&#8211;</i><i>&#9633;</i><i>&#10005;</i></span></div>
+              <div class="imgs">
+                <img src="img/screens/dashboard.png" alt="CSVCOP Dashboard" data-caption="Dashboard: compliance, tamper alerts, blocked attempts and the network at a glance." width="1350" height="781">
+                <img src="img/screens/configure-controls.png" alt="CSVCOP Configure Controls" data-caption="Configure Controls: 97 numbered controls, each switched on by itself." width="1350" height="781" loading="lazy">
+                <img src="img/screens/usb-control.png" alt="CSVCOP USB Control" data-caption="USB Control: blocking is on; two devices are let in during their schedule." width="1350" height="781" loading="lazy">
+                <img src="img/screens/ms-observed-traffic.png" alt="Micro-segmentation Observed traffic" data-caption="Observed traffic: what the PC talked to, how often and when, allowed and blocked." width="1350" height="781" loading="lazy">
+                <img src="img/screens/ms-rules.png" alt="Micro-segmentation Rules" data-caption="Rules: seven rules for an HPLC workstation, one of them with a weekday window." width="1350" height="781" loading="lazy">
+                <img src="img/screens/ms-restrictions.png" alt="Micro-segmentation Restrictions" data-caption="Restrictions: just after Save &amp; Apply, in force and counting down to Commit." width="1350" height="781" loading="lazy">
+                <img src="img/screens/report-control-changes.png" alt="Control Change History report" data-caption="Control Change History: every control switched, by whom, when and why." width="1350" height="781" loading="lazy">
+                <img src="img/screens/report-network-activity.png" alt="Micro-segmentation Activity report" data-caption="Micro-segmentation Activity: policy changes, commits, refusals and firewall tamper." width="1350" height="781" loading="lazy">
+              </div>
+              <span class="zoom-hint"><svg class="i i-sm"><use href="#i-zoom"/></svg>Click to enlarge</span>
+            </figure>
+          </div>
+          <div class="tour-meta"><p class="tour-cap"></p><div class="tour-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         </div>
       </div>
-
-      <div class="split flip reveal">
-        <div>
-          <span class="eyebrow eb-b">Micro-segmentation</span>
-          <h2>Rules made from what the PC really does</h2>
-          <p>An instrument PC needs its data server, its instrument and Windows itself &mdash; not the whole network, and not the whole internet. Learning mode records every connection the PC makes, and each line becomes a rule in one click. Then isolate the PC from its network, limit the internet to named programs, or both.</p>
-          <ul class="checks">
-            <li><svg class="i"><use href="#i-check"/></svg>Rules by program or Windows service, address, port and protocol</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Presets for a file share, SQL Server, a printer and Remote Desktop</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Schedules: a rule holds only during its window</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span>Observed traffic &middot; LAB-PC-07</span><span class="tag">learning mode</span></div>
-          <div class="row"><span class="av green"><svg class="i"><use href="#i-server"/></svg></span><span class="grow"><b>chromatography.exe</b><small>10.20.4.15:1433 TCP &middot; seen 412 times</small></span><span class="tag green">Allowed</span></div>
-          <div class="row"><span class="av green"><svg class="i"><use href="#i-cpu"/></svg></span><span class="grow"><b>instrument-ctl.exe</b><small>10.20.6.21:5025 TCP &middot; seen 96 times</small></span><span class="tag green">Allowed</span></div>
-          <div class="row"><span class="av green"><svg class="i"><use href="#i-globe"/></svg></span><span class="grow"><b>updater.exe</b><small>203.0.113.10:443 TCP &middot; seen 3 times</small></span><span class="tag green">Allowed</span></div>
-          <div class="row row-actions"><span class="grow"><small>Select a line, then one click:</small></span><span class="tag">Allow this</span><span class="tag">Allow program to internet</span></div>
-        </div>
-      </div>
-
-      <div class="split reveal">
-        <div>
-          <span class="eyebrow"><span class="nb">21 CFR Part 11</span> Controls</span>
-          <h2>Block the effect, not the button</h2>
-          <p>Windows policy can hide a menu; it cannot stop Ctrl+C, a toolbar button or a drag. The CSVCOP agent lives in every signed-in session and closes those routes where they all end up. USB follows your SOP: deny everything, deny writing, or allow the exact devices your instruments need.</p>
-          <ul class="checks">
-            <li><svg class="i"><use href="#i-check"/></svg>Keys, toolbar buttons, drag and drop, and the clipboard itself</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Deleted files back from the Recycle Bin in milliseconds</li>
-            <li><svg class="i"><use href="#i-check"/></svg>USB denied, read-only, or allowed by device</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span>Blocked attempts &middot; LAB-PC\operator</span><span class="tag red">Blocked by admin</span></div>
-          <div class="row"><span class="av red">C</span><span class="grow"><b>File copy blocked</b><small>clipboard cleared &middot; Results &mdash; File Explorer</small></span><span class="when">14:48</span></div>
-          <div class="row"><span class="av red">F2</span><span class="grow"><b>Rename blocked</b><small>batch-0412.csv &middot; rename box closed</small></span><span class="when">14:51</span></div>
-          <div class="row"><span class="av red">Del</span><span class="grow"><b>Delete undone</b><small>restored from the Recycle Bin in 40 ms</small></span><span class="when">15:03</span></div>
-          <div class="row"><span class="av red"><svg class="i"><use href="#i-drive"/></svg></span><span class="grow"><b>Unknown mass storage</b><small>plugged in 15:20 &middot; refused</small></span><span class="when">15:20</span></div>
-        </div>
-      </div>
-
-      <div class="split flip reveal">
-        <div>
-          <span class="eyebrow eb-b">Micro-segmentation</span>
-          <h2>Safe to apply, held in place, on record</h2>
-          <p>Before a change is applied, CSVCOP lists the connections that will stop working. A tightening change is in force at once, and undoes itself unless it is confirmed within five minutes. From then on the watchdog holds the firewall to the policy every 30 seconds.</p>
-          <ul class="checks">
-            <li><svg class="i"><use href="#i-check"/></svg>A warning when the session looks remote, before the PC is cut off</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Rules changed outside CSVCOP put back and logged as tampering</li>
-            <li><svg class="i"><use href="#i-check"/></svg>Each refused connection recorded with program, address, port and protocol</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><span>Micro-segmentation &middot; Restrictions</span><span class="tag amber">3:32 left to commit</span></div>
-          <div class="row"><span class="av amber"><svg class="i"><use href="#i-clock"/></svg></span><span class="grow"><b>Applied, not yet committed</b><small>the previous policy comes back by itself unless committed</small></span><span class="tag">Commit</span></div>
-          <div class="row"><span class="av"><svg class="i"><use href="#i-slash"/></svg></span><span class="grow"><b>Isolate this PC from the local network</b><small>DHCP, DNS and the other Windows allowances stay open</small></span><span class="tag green">On</span></div>
-          <div class="row"><span class="av"><svg class="i"><use href="#i-globe"/></svg></span><span class="grow"><b>Restrict the internet to allowed programs</b><small>3 programs named</small></span><span class="tag green">On</span></div>
-          <div class="row"><span class="av red"><svg class="i"><use href="#i-alert"/></svg></span><span class="grow"><b>Network Tamper</b><small>rule &lsquo;CSVCOP: HPLC data server&rsquo; disabled outside CSVCOP &middot; put back</small></span><span class="when">16:02</span></div>
-        </div>
-      </div>
-
     </div>
   </section>
 
   <!-- Numbers -->
-  <section class="container reveal">
+  <section class="container reveal-zoom">
     <div class="band">
       <div><b class="count" data-count="97">97</b><span>security controls</span></div>
       <div><b class="count" data-count="30" data-suffix=" s">30 s</b><span>self-healing cycle, controls and rules</span></div>
-      <div><b class="count" data-count="5" data-suffix=" min">5 min</b><span>to confirm a network change</span></div>
+      <div><b class="count" data-count="5" data-suffix=" min">5 min</b><span>to commit a network change</span></div>
       <div><b>0</b><span>internet connections required</span></div>
     </div>
   </section>
@@ -320,12 +341,13 @@
         <h2>From a fresh Windows PC to a locked, segmented, audited workstation</h2>
         <p>An application decides, a service enforces, an agent guards the session, and the firewall built into Windows carries the network policy.</p>
       </div>
-      <div class="steps">
-        <div class="step reveal"><span class="n">01 &middot; INSTALL</span><h3>Install and activate</h3><p>One MSI per workstation. A licence key bound to that PC activates it, with no internet.</p></div>
-        <div class="step reveal"><span class="n">02 &middot; LOCK DOWN</span><h3>Switch on the controls</h3><p>Choose the controls your SOP asks for; each says what it does. Save &amp; Apply asks for the password again.</p></div>
-        <div class="step reveal" style="border-top: 3px solid var(--teal-500);"><span class="n" style="color: var(--teal-600);">03 &middot; SEGMENT</span><h3>Decide the connections</h3><p>Learning mode shows what the PC talks to. Make the rules from what was seen, apply the restrictions, confirm them.</p></div>
-        <div class="step reveal"><span class="n">04 &middot; PROVE</span><h3>Print the evidence</h3><p>Reports to PDF: the controls as applied, every change and who made it, the network policy and every refused connection.</p></div>
+      <div class="steps stagger">
+        <div class="step"><span class="n">01 &middot; INSTALL</span><h3>Install and activate</h3><p>One MSI per workstation. A licence key bound to that PC activates it, with no internet.</p></div>
+        <div class="step"><span class="n">02 &middot; LOCK DOWN</span><h3>Switch on the controls</h3><p>Choose the controls your SOP asks for; each says what it does. Save &amp; Apply asks for the password again.</p></div>
+        <div class="step" style="border-top: 3px solid var(--teal-500);"><span class="n" style="color: var(--teal-600);">03 &middot; SEGMENT</span><h3>Decide the connections</h3><p>Learning mode shows what the PC talks to. Make the rules from what was seen, apply the restrictions, commit them.</p></div>
+        <div class="step"><span class="n">04 &middot; PROVE</span><h3>Print the evidence</h3><p>Reports to PDF: the controls as applied, every change and who made it, the network policy and every refused connection.</p></div>
       </div>
+      <p class="center" style="margin-top: 34px;"><a class="link-arrow" href="overview.html">See how it fits together <span>&rarr;</span></a></p>
     </div>
   </section>
 
@@ -337,24 +359,25 @@
         <h2>Built around what <span class="nb">21 CFR Part 11</span> asks you to show</h2>
         <p>CSVCOP supplies the workstation-level controls and writes the records. Your validation and SOPs remain yours &mdash; and become far easier to evidence.</p>
       </div>
-      <div class="cards-4">
-        <div class="card reveal"><span class="icon-chip"><svg class="i i-lg"><use href="#i-lock"/></svg></span><h3>Limited access</h3><p>Windows policy for the workstation and password-policy, rate-limited CSVCOP accounts. <em>&sect; 11.10 (d)</em></p></div>
-        <div class="card reveal"><span class="icon-chip"><svg class="i i-lg"><use href="#i-file"/></svg></span><h3>Audit trails</h3><p>Time-stamped entries with the account, written independently of the operator: tamper events, blocked attempts, refused connections. <em>&sect; 11.10 (e)</em></p></div>
-        <div class="card reveal"><span class="icon-chip"><svg class="i i-lg"><use href="#i-refresh"/></svg></span><h3>Operational checks</h3><p>Controls and firewall rules that put themselves back every 30 seconds cannot drift between audits. <em>&sect; 11.10 (f)</em></p></div>
-        <div class="card reveal"><span class="icon-chip"><svg class="i i-lg"><use href="#i-drive"/></svg></span><h3>Device checks</h3><p>Removable-storage control with a whitelist by hardware identity. <em>&sect; 11.10 (h)</em></p></div>
+      <div class="cards-4 stagger">
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-lock"/></svg></span><h3>Limited access</h3><p>Windows policy for the workstation and password-policy, rate-limited CSVCOP accounts. <em>&sect; 11.10 (d)</em></p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-file"/></svg></span><h3>Audit trails</h3><p>Time-stamped entries with the account, written independently of the operator: tamper events, blocked attempts, refused connections. <em>&sect; 11.10 (e)</em></p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-refresh"/></svg></span><h3>Operational checks</h3><p>Controls and firewall rules that put themselves back every 30 seconds cannot drift between audits. <em>&sect; 11.10 (f)</em></p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-drive"/></svg></span><h3>Device checks</h3><p>Removable-storage control with a whitelist by hardware identity. <em>&sect; 11.10 (h)</em></p></div>
       </div>
       <div class="callout teal reveal narrow" style="margin: 30px auto 0;"><b>Internet and intranet access on your checklist?</b> Those lines are answered by Micro-segmentation: which programs may reach the internet, and which machines the workstation may talk to. <a href="products.html#micro-segmentation">How it works &rarr;</a></div>
+      <p class="center" style="margin-top: 30px;"><a class="link-arrow" href="overview.html#compliance">Requirement by requirement <span>&rarr;</span></a></p>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="section" style="padding-bottom: 0;">
     <div class="container">
-      <div class="cta reveal">
+      <div class="cta reveal-zoom">
         <h2>See both modules on one of your own workstations</h2>
         <p>Bring the checkpoint your auditor raised and the list of machines the PC must reach. We will show you the controls, the rules and the evidence both produce.</p>
         <div class="hero-actions">
-          <a class="btn btn-light btn-lg" href="https://www.csvcop.com/contact">Request a demo <svg class="i arrow"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-light btn-lg" href="contact.html">Request a demo <svg class="i arrow"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-outline-light btn-lg" href="products.html">Explore the products</a>
         </div>
       </div>
@@ -385,11 +408,11 @@
             <div>
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="https://www.csvcop.com/overview">Overview</a></li>
-                    <li><a href="https://www.csvcop.com/features">Features</a></li>
-                    <li><a href="https://www.csvcop.com/pricing">Pricing</a></li>
-                    <li><a href="https://www.csvcop.com/faq">FAQ</a></li>
-                    <li><a href="https://www.csvcop.com/contact">Contact</a></li>
+                    <li><a href="overview.html">Overview</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="features.html#controls">All 97 controls</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
             <div>
@@ -397,7 +420,7 @@
                 <ul>
                     <li>Corporate Office<br />C 206, 2nd Floor, Business Park<br />PDPU Road, Raysan<br />Gandhinagar, Gujarat 382421, India</li>
                     <li><a href="mailto:sales&#64;databricks.online">sales&#64;databricks.online</a></li>
-                    <li>Pricing &amp; purchase: <a href="https://www.csvcop.com/pricing">SEK RAW Business Services</a></li>
+                    <li>Pricing &amp; purchase: <a href="pricing.html">SEK RAW Business Services</a></li>
                 </ul>
             </div>
         </div>
@@ -410,5 +433,6 @@
 
 <div class="demo-badge">DEMO<span>not the live site</span></div>
 <script src="js/website.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>

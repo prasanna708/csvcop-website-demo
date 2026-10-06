@@ -183,8 +183,8 @@
 /* A note pointing the checklist's network lines at the module that answers them. */
 .callout.teal { background: var(--teal-50); border-color: #c6e9e4; border-left-color: var(--teal-500); }
 
-/* The footer gains a Products column. */
-.foot-grid { grid-template-columns: 1.4fr 1.05fr 0.85fr 1.3fr; }
+/* The footer gains a Products column (desktop widths only; the site's own rules lay it out below that). */
+@media (min-width: 1021px) { .foot-grid { grid-template-columns: 1.4fr 1.05fr 0.85fr 1.3fr; } }
 
 /* ── Responsive ── */
 @media (max-width: 1020px) {
@@ -213,6 +213,32 @@
   .module-head { flex-direction: column; }
   .lic { padding: 28px 20px; }
 }
+
+/* Features: each module's half opens with a banner in its colour. */
+.module-banner { display: flex; gap: 24px; align-items: flex-start; margin: 84px 0 6px; padding: 36px 38px; border-radius: 26px; color: #fff; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #17336a 0%, #2d64b9 62%, #5b93ea 130%); box-shadow: 0 24px 60px rgba(30, 60, 120, 0.22); }
+.module-banner.b { background: linear-gradient(135deg, #08403e 0%, #0e8c86 62%, #3cc1b2 130%); box-shadow: 0 24px 60px rgba(14, 110, 105, 0.22); }
+.module-banner::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(440px 230px at 100% 0%, rgba(255, 255, 255, 0.18), transparent 70%); }
+.module-banner > * { position: relative; z-index: 1; }
+.module-banner .module-badge { background: rgba(255, 255, 255, 0.16); border: 1px solid rgba(255, 255, 255, 0.28); box-shadow: none; }
+.module-banner .module-kicker { color: rgba(255, 255, 255, 0.86); }
+.module-banner h2 { color: #fff; margin-bottom: 10px; }
+.module-banner p { color: rgba(255, 255, 255, 0.88); font-size: 1.05rem; max-width: 840px; }
+.module-banner .chips { margin-top: 20px; }
+.module-banner .chips a { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.28); color: #fff; box-shadow: none; }
+.module-banner .chips a:hover { background: rgba(255, 255, 255, 0.26); color: #fff; }
+.modnav ~ .container .group, .modnav ~ .container .module-banner { scroll-margin-top: 140px; }
+.icon-chip.ms { background: var(--teal-100); color: var(--teal-600); }
+.allow-list { display: grid; gap: 10px; }
+.allow-list li { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-sm); }
+.allow-list .tick { background: var(--teal-100); color: var(--teal-600); margin-top: 2px; }
+.allow-list b { display: block; color: var(--navy-900); font-size: 0.95rem; }
+.allow-list small { display: block; color: var(--muted); font-size: 0.84rem; }
+@media (max-width: 560px) { .module-banner { flex-direction: column; padding: 28px 22px; } }
+
+/* Pricing: the two modules under the headline. */
+.price-mods { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
+.price-mods .mtag { font-size: 0.8rem; padding: 6px 13px; }
 
 /* Phones: the coverage table becomes a list, each answer labelled with its module. */
 @media (max-width: 560px) {

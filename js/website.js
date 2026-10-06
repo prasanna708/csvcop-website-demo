@@ -26,8 +26,13 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     revealEls.forEach(function (el) { io.observe(el); });
-    // Safety net: nothing may stay invisible if the observer never fires (background tab, print, screenshots).
-    setTimeout(revealAll, 2500);
+    // Safety net for an observer that never fires (a background tab): after 2.5 s, whatever is already above the
+    // bottom of the window is shown. Sections further down still come in as they are scrolled to; the old net
+    // revealed the whole page at once, so nothing was ever seen animating.
+    setTimeout(function () {
+      var limit = window.innerHeight;
+      revealEls.forEach(function (el) { if (el.getBoundingClientRect().top < limit) { el.classList.add('in'); } });
+    }, 2500);
   } else {
     revealAll();
   }
@@ -88,6 +93,14 @@
         e.preventDefault();
         var first = form.querySelector('.invalid input, .invalid textarea, .invalid select');
         if (first) { first.focus(); }
+        return;
+      }
+
+      // The demo has no server: a complete form is answered on the page and sent nowhere.
+      if (form.hasAttribute('data-demo')) {
+        e.preventDefault();
+        var okBox = document.getElementById('formOk');
+        if (okBox) { okBox.classList.add('show'); okBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
         return;
       }
 

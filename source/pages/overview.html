@@ -1,0 +1,252 @@
+  <section class="page-head">
+    <div class="blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+    <div class="container">
+      <p class="crumbs" data-enter style="--d: 0.05s"><a href="index.html">Home</a><span>/</span>Overview</p>
+      <h1 data-enter style="--d: 0.15s">Three programs, <span class="grad shine-text">one encrypted source of truth</span></h1>
+      <p class="lead" data-enter style="--d: 0.28s">CSVCOP is deliberately simple to reason about: an application decides, a service enforces, an agent guards the session, and the firewall built into Windows carries the network policy &mdash; and they coordinate only through encrypted files that the service protects.</p>
+      <div class="chips" data-enter style="--d: 0.4s">
+        <a href="#architecture">Architecture</a>
+        <a href="#cycle">The 30-second cycle</a>
+        <a href="#compliance"><span class="nb">21 CFR Part 11</span></a>
+        <a href="#checkpoints">Audit checkpoints</a>
+        <a href="#data">Data protection</a>
+        <a href="#resilience">Resilience</a>
+        <a href="#deploy">Deployment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What it is -->
+  <section class="section" style="padding-top: 40px;">
+    <div class="container">
+      <div class="split">
+        <div class="reveal-left">
+          <span class="eyebrow">What CSVCOP is</span>
+          <h2>A lockdown you switch on, and a network you decide</h2>
+          <p>A laboratory workstation has to be usable by operators and unchangeable by them, and it should talk only to the machines it needs. <span class="m-a"><span class="nb">21 CFR Part 11</span> Controls</span> turns the long list of Windows settings behind the first half into 97 numbered controls, each switched on or off by itself and described in plain language. <span class="m-b">Micro-segmentation</span> answers the second half: which programs on the PC may talk to which machines.</p>
+          <ul class="checks">
+            <li><svg class="i"><use href="#i-check"/></svg>Applied to every user of the machine, including accounts created later</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Held in place by a service the operator cannot stop: controls and firewall rules alike</li>
+            <li><svg class="i"><use href="#i-check"/></svg>Every change, tamper event, blocked attempt and refused connection written down</li>
+          </ul>
+        </div>
+        <div class="reveal-right">
+          [[shot file="dashboard" alt="CSVCOP Dashboard" caption="The dashboard of a protected HPLC workstation: both modules at a glance."]]
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section section-soft" id="architecture" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Architecture</span>
+        <h2>What runs where</h2>
+        <p>Three programs with one job each. None of them needs a network, and the application does not need to stay open.</p>
+      </div>
+      <div class="cards-3 stagger">
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-monitor"/></svg></span><h3>CSVCOP application</h3><small class="sub">21Part11.exe · elevated, on demand</small><p>Where administrators sign in, configure and apply controls, write the network policy, manage users and USB whitelists, activate the licence and print reports.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-server"/></svg></span><h3>Watchdog service</h3><small class="sub">CsvCopWatchdog.exe · SYSTEM · always on</small><p>Enforces the master every 30 seconds, holds the network policy in Windows Firewall, reverses tampering, protects the data folders, supervises the session agent, keeps the licence honest and writes the logs.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-eye"/></svg></span><h3>Session agent</h3><small class="sub">CsvCopAgent.exe · one per signed-in user</small><p>Lives inside each desktop session, where a service cannot: keyboard, clipboard, toolbar, rename box and Recycle Bin — and the “Blocked by admin” note.</p></div>
+      </div>
+      <div class="card hub reveal-zoom">
+        <span class="icon-chip"><svg class="i i-lg"><use href="#i-database"/></svg></span>
+        <div>
+          <h3>Encrypted masters &amp; logs</h3>
+          <small class="sub">C:\ProgramData\CsvCop · DPAPI, machine-bound · SYSTEM and administrators only</small>
+          <p>The control master, users, USB whitelist, network policy, licence and clock records, plus the application, security and heartbeat logs. The application writes here; the service reads, enforces, backs up and restores. The two never call each other directly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cycle -->
+  <section class="section" id="cycle" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="split">
+        <div class="reveal-left">
+          <span class="eyebrow">The 30-second cycle</span>
+          <h2>What the service does, every half minute, for ever</h2>
+          <ol class="olist">
+            <li><span><b>Heartbeat</b> — a dated line proving the service is alive.</span></li>
+            <li><span><b>Session agents</b> — every signed-in session has one; their blocked-attempt reports move into the security log.</span></li>
+            <li><span><b>Licence</b> — record the latest time seen, evaluate the licence, log any change of state.</span></li>
+            <li><span><b>Compliance check</b> — read the live value of every applied control and compare it with the master.</span></li>
+            <li><span><b>Restore</b> — put back anything that differs, on the machine and in every user profile, and log the values found and restored.</span></li>
+            <li><span><b>Network policy</b> — hold Windows Firewall to the policy: put back rules changed outside CSVCOP, roll back a change nobody committed within five minutes, record the connections refused.</span></li>
+            <li><span><b>Backup</b> — refresh the protected backup of the master.</span></li>
+          </ol>
+        </div>
+        <div class="stack reveal-right">
+          <div class="callout"><b>How it tells tampering from a legitimate change.</b> When an administrator applies a configuration, the application writes a new version stamp beside the master. The service sees the version change and applies the new configuration. The same difference with an unchanged version is tampering — reversed and logged. No false alarms for your own changes; no silent acceptance of anyone else's.</div>
+          <div class="panel">
+            <div class="panel-head"><span>What each side sees</span></div>
+            <div class="row"><span class="av navy">OP</span><span class="grow"><b>The operator</b><small>Nothing. The policy they changed is silently back within half a minute.</small></span></div>
+            <div class="row"><span class="av green">QA</span><span class="grow"><b>The auditor</b><small>A dated entry: which control, the value found, the value restored, the machine and account.</small></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part 11 -->
+  <section class="section section-soft" id="compliance" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="nb">21 CFR Part 11</span> · § 11.10</span>
+        <h2>Requirement by requirement</h2>
+        <p>What CSVCOP provides, and what stays with you — because a tool that claims to do all of it is not being straight with you.</p>
+      </div>
+      <div class="table-wrap reveal-zoom">
+        <table>
+          <thead><tr><th>Requirement</th><th>How CSVCOP helps</th><th>What remains yours</th></tr></thead>
+          <tbody>
+            <tr><td>Validation of systems <span class="ref">11.10 (a)</span></td><td>Deterministic, enforced configuration and complete records make the system's behaviour reproducible and evidenced.</td><td>Your validation protocol and its execution.</td></tr>
+            <tr><td>Accurate and complete copies of records <span class="ref">11.10 (b)</span></td><td>Configuration and activity reports exported to PDF; logs kept as daily files.</td><td>Retention periods and where the copies are archived.</td></tr>
+            <tr><td>Protection of records <span class="ref">11.10 (c)</span></td><td>Masters encrypted and machine-bound; log and master folders writable only by SYSTEM and administrators; automatic backups; restoration if deleted. <span class="mtag b">Micro-segmentation</span> Only named programs can send data off the PC; the rest are refused and recorded.</td><td>Backup of the machine itself and the archive of exported reports.</td></tr>
+            <tr><td>Limiting access to authorised individuals <span class="ref">11.10 (d)</span></td><td>Windows policy controls for the workstation; CSVCOP accounts with password policy, forced rotation, rate limiting and idle timeout. <span class="mtag b">Micro-segmentation</span> Connections from other machines can be refused, except what an inbound rule allows.</td><td>Deciding who is authorised, and the Windows accounts themselves.</td></tr>
+            <tr><td>Secure, time-stamped audit trails <span class="ref">11.10 (e)</span></td><td>Application log, security log and Windows Event Log, each entry time-stamped with the account; blocked attempts and tamper events recorded independently of the operator. <span class="mtag b">Micro-segmentation</span> Policy changes, commits and every refused connection.</td><td>Periodic review of the audit trail.</td></tr>
+            <tr><td>Operational system checks <span class="ref">11.10 (f)</span></td><td>Enforced configuration that heals itself every 30 seconds, so the operational state cannot drift. <span class="mtag b">Micro-segmentation</span> Firewall rules held to the policy on the same cycle.</td><td>Sequencing checks inside your own applications.</td></tr>
+            <tr><td>Authority checks <span class="ref">11.10 (g)</span></td><td>Only CSVCOP administrators can change the lockdown, and they re-authenticate to do so; Windows prompts for an administrator for privileged operations.</td><td>Assignment of roles to people.</td></tr>
+            <tr><td>Device checks <span class="ref">11.10 (h)</span></td><td>Removable-storage control with a per-device whitelist by hardware identity.</td><td>The list of approved devices.</td></tr>
+            <tr><td>Controls over system documentation <span class="ref">11.10 (k)</span></td><td>Each control's description, effect and side effects are documented inside the application and in the exported reports.</td><td>Change control for your SOPs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 22px;">Training of personnel (11.10 i) and written accountability policies (11.10 j) are organisational controls outside any software's scope.</p>
+      <div class="callout reveal narrow" style="margin: 34px auto 0;"><b>Honest scope.</b> CSVCOP controls the Windows workstation and records what happens there. It does not validate your instrument software, sign your electronic records, or manage your training. It makes the workstation part of your compliance story simple to prove.</div>
+    </div>
+  </section>
+
+  <!-- Checkpoints -->
+  <section class="section" id="checkpoints" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Audit checkpoints</span>
+        <h2>The questions auditors ask, mapped to control numbers</h2>
+        <p>A typical laboratory checklist, and the CSVCOP controls that answer each line. The numbers are the ones shown in the application.</p>
+      </div>
+      <div class="table-wrap reveal-zoom narrow" style="margin: 0 auto;">
+        <table>
+          <thead><tr><th>Checkpoint</th><th>Answered by</th></tr></thead>
+          <tbody>
+            <tr><td>Add or remove hardware</td><td>Windows administrator prompt; 86 blocks new USB devices</td></tr>
+            <tr><td>Add or remove software</td><td>84 (Settings and Control Panel); installers require an administrator</td></tr>
+            <tr><td>Change system date and time</td><td>67, 73 (87 = the same right as 67)</td></tr>
+            <tr><td>Access to Local Security Policy</td><td>57</td></tr>
+            <tr><td>Create and modify users</td><td>Windows administrator prompt; 57 blocks the management console</td></tr>
+            <tr><td>Enable or disable users</td><td>Windows administrator prompt; 57</td></tr>
+            <tr><td>Access to external storage</td><td>86 (all), 61 (deny write), 60–64 for finer control, USB whitelist</td></tr>
+            <tr><td>Modification and deletion of data</td><td>94, 95, 96, 97 — keys, toolbar, drag, clipboard, rename, delete-restore</td></tr>
+            <tr><td>Installation of office tools</td><td>Windows administrator prompt; 57 for named programs</td></tr>
+            <tr><td>Access to the Run command</td><td>8, 34</td></tr>
+            <tr><td>Access to the command prompt</td><td>56 (command prompt), 57 (PowerShell and named tools)</td></tr>
+            <tr><td>Copy, paste, shortcuts and toolbar</td><td>94, 96, 97; 7 for the right-click menu</td></tr>
+            <tr><td>Map network drive</td><td>89</td></tr>
+            <tr><td>Access to drives</td><td>90, 91</td></tr>
+            <tr><td>Control Panel</td><td>84</td></tr>
+            <tr><td>Right-click on taskbar and desktop</td><td>44, 7</td></tr>
+            <tr><td>Recycle Bin</td><td>14</td></tr>
+            <tr><td>Services console</td><td>57</td></tr>
+            <tr><td>USB</td><td>86 (with 60–64 and the whitelist)</td></tr>
+            <tr><td>Restrict shutdown</td><td>22 (menu entries), 93 (the right itself)</td></tr>
+            <tr><td>Internet access</td><td><span class="mtag b">Micro-segmentation</span> internet for named programs only; every other program refused and recorded</td></tr>
+            <tr><td>Intranet and network shares</td><td><span class="mtag b">Micro-segmentation</span> the PC isolated from the local network; rules for the data server, file share and printer it needs</td></tr>
+            <tr><td>Remote access by vendors</td><td><span class="mtag b">Micro-segmentation</span> an inbound Remote Desktop rule from one address, limited to its weekday window</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top: 22px;">The control numbers are the ones shown in the application. <a href="features.html#controls">See all 97 controls &rarr;</a> &nbsp; <a href="features.html#micro-segmentation">Micro-segmentation in detail &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- Evidence -->
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Evidence</span>
+        <h2>What you can hand to the auditor</h2>
+        <p>The same reports for both modules, and the same audit trail underneath them.</p>
+      </div>
+      <div class="cards-4 stagger">
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-printer"/></svg></span><h3>Configuration and changes</h3><p>System Controls Summary: every control and its state, as applied. Control Change History: who switched what, when and why.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-file"/></svg></span><h3>Activity and audit trail</h3><p>User Activity Log, User Summary, and the Audit Trail of every event, filtered by date and user.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-drive"/></svg></span><h3>USB</h3><p>USB Whitelist Summary of the devices let in and their schedules; USB Whitelist Activity of every change to the list.</p></div>
+        <div class="card" style="border-top: 3px solid var(--teal-500);"><span class="icon-chip" style="background: var(--teal-100); color: var(--teal-600);"><svg class="i i-lg"><use href="#i-share"/></svg></span><h3>Network</h3><p>Micro-segmentation Policy: the rules in force. Micro-segmentation Activity: every change and every refused connection.</p></div>
+      </div>
+      <p class="note" style="margin-top: 22px;">Nine reports, each a click from PDF with your logo, the Equipment ID and the date; the two network reports come with the Micro-segmentation module. Tamper events are also mirrored to the Windows Event Log.</p>
+    </div>
+  </section>
+
+  <!-- Data protection -->
+  <section class="section" id="data" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Data protection</span>
+        <h2>What protects CSVCOP's own data</h2>
+      </div>
+      <div class="table-wrap reveal-zoom">
+        <table>
+          <thead><tr><th>What</th><th>Where</th><th>Protection</th></tr></thead>
+          <tbody>
+            <tr><td>Control master, users, USB whitelist, network policy, licence, clock</td><td>Masters folder</td><td>Encrypted with DPAPI in machine scope — readable only on the machine that wrote it. Folder writable only by SYSTEM and administrators; everyone else reads only.</td></tr>
+            <tr><td>Backups of the masters</td><td>Backups folder</td><td>Same permissions; refreshed every cycle; used to restore a deleted or corrupted master automatically.</td></tr>
+            <tr><td>Application, security and heartbeat logs</td><td>Logs folder</td><td>Daily files, writable by the service and the elevated application; operators can add their blocked-attempt reports but cannot touch the security log itself.</td></tr>
+            <tr><td>Tamper events</td><td>Windows Event Log</td><td>Mirrored to the Application log so your existing collection sees them.</td></tr>
+            <tr><td>Passwords</td><td>Users master</td><td>Salted PBKDF2 hashes; the clear text is never stored.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resilience -->
+  <section class="section section-soft" id="resilience" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="split">
+        <div class="reveal-left">
+          <span class="eyebrow">Start-up &amp; resilience</span>
+          <h2>Protection that is there from the first second</h2>
+          <p>A security service that is late, or easy to stop, is a hole. CSVCOP is built to be neither: it starts before the sign-in screen, and Windows treats even a deliberate stop as a failure to recover from.</p>
+        </div>
+        <dl class="kv reveal-right">
+          <div><dt>At boot</dt><dd>The service starts with the other automatic services, before the sign-in screen — not delayed.</dd></div>
+          <div><dt>At sign-in</dt><dd>The service receives the sign-in event and starts the session agent for that user at once.</dd></div>
+          <div><dt>If the agent ends</dt><dd>The service starts it again within a second or two; a crash-loop is paced, never spun.</dd></div>
+          <div><dt>Can an operator end it?</dt><dd>No. A standard user can see the agent but not end, suspend or tamper with it.</dd></div>
+          <div><dt>If the service stops</dt><dd>Windows restarts it after 5, 10 and 30 seconds.</dd></div>
+          <div><dt>If the master is deleted</dt><dd>Restored from the protected backup on the next cycle, and the deletion logged.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="section" id="deploy" style="scroll-margin-top: 80px;">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Deployment</span>
+        <h2>One installer, modest requirements</h2>
+      </div>
+      <div class="cards-4 stagger">
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-monitor"/></svg></span><h3>Windows</h3><p>7 SP1 through 11, 32- or 64-bit.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-layers"/></svg></span><h3>Runtime</h3><p>.NET Framework 4.5 or later — built into Windows 8 and later.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-package"/></svg></span><h3>Install</h3><p>One MSI; administrator rights for installation and configuration.</p></div>
+        <div class="card"><span class="icon-chip"><svg class="i i-lg"><use href="#i-wifi-off"/></svg></span><h3>Network</h3><p>None required &mdash; for operation or for activation. The licence key names the modules the PC has.</p></div>
+      </div>
+      <p class="note" style="margin-top: 26px;">Some controls take effect immediately; some at the user's next sign-in or after Explorer restarts. Each control's description says which.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="container">
+    <div class="cta reveal-zoom">
+      <h2>Ready to see it running?</h2>
+      <p>A demonstration on a workstation like yours includes the tamper, blocked-attempt and refused-connection evidence, not just the settings screens.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light btn-lg" href="contact.html">Request a demo <svg class="i arrow"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-outline-light btn-lg" href="products.html">Explore the products</a>
+      </div>
+    </div>
+  </section>

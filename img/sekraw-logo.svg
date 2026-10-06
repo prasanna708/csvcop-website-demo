@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SEK RAW Business Services: the mark shown in the header of https://www.sekraw.com (their inline SVG), reproduced
+     here with their permission as CSVCOP's authorised distributor. Replace with an official file if they supply one. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100" role="img" aria-label="SEK RAW Business Services">
+  <defs>
+    <linearGradient id="sekrawNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B2F59"/>
+      <stop offset="100%" stop-color="#0F1B3D"/>
+    </linearGradient>
+  </defs>
+  <!-- the square mark: 200-unit artwork drawn at half size -->
+  <g transform="scale(0.5)">
+    <rect width="200" height="200" rx="24" fill="url(#sekrawNavy)"/>
+    <circle cx="155" cy="49" r="14" fill="#FF8C1A"/>
+    <text x="100" y="172" text-anchor="middle" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800" fill="#FFFFFF" letter-spacing="3">SEK RAW</text>
+  </g>
+  <!-- the wordmark beside it -->
+  <rect x="116" y="46" width="3.5" height="48" fill="#FF8C1A"/>
+  <text x="128" y="66" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="17.5" font-weight="800" fill="#FF8C1A" letter-spacing="3.2">BUSINESS</text>
+  <text x="128" y="90" font-family="system-ui, 'Segoe UI', Arial, sans-serif" font-size="17.5" font-weight="800" fill="#FF8C1A" letter-spacing="3.2">SERVICES</text>
+</svg>

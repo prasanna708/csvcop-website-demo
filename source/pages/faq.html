@@ -1,0 +1,116 @@
+  <section class="page-head">
+    <div class="blobs" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+    <div class="container narrow">
+      <p class="crumbs" data-enter style="--d: 0.05s"><a href="index.html">Home</a><span>/</span>FAQ</p>
+      <h1 data-enter style="--d: 0.15s">Questions, <span class="grad shine-text">answered</span></h1>
+      <p class="lead" data-enter style="--d: 0.28s">What CSVCOP needs, what each of its two modules changes on a workstation, what an auditor receives, and how licensing works on machines that are never online.</p>
+      <div class="chips" data-enter style="--d: 0.4s">
+        <a href="#product">Product &amp; deployment</a>
+        <a href="#network">Micro-segmentation</a>
+        <a href="#compliance">Compliance &amp; evidence</a>
+        <a href="#licensing">Licensing &amp; activation</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container narrow">
+
+    <!-- Product -->
+    <section class="group" id="product" style="padding-top: 24px;">
+      <div class="group-head reveal">
+        <span class="eyebrow">Product &amp; deployment</span>
+        <h2>Running CSVCOP and <span class="nb">21 CFR Part 11</span> Controls</h2>
+      </div>
+      <details class="acc reveal"><summary>Which Windows versions are supported?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Windows 7 SP1 through Windows 11, 32- and 64-bit, with .NET Framework 4.5 or later — built into Windows 8 and later.</p></div></details>
+      <details class="acc reveal"><summary>Does it need a server, a domain or a network?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. CSVCOP runs entirely on the workstation and needs no server, domain or network connection — not to run, and not to activate. It works alongside a domain if you have one.</p></div></details>
+      <details class="acc reveal"><summary>Will it interfere with our instrument software?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>The Windows policy controls affect the shell, not your applications. The session guard's strictest settings — blocking the clipboard in every program, for instance — do affect every program, and each control's description says so before you switch it on. That is precisely what a pilot on one workstation is for.</p></div></details>
+      <details class="acc reveal"><summary>Can administrators still work on the machine?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Most controls apply to every account, administrators included; the descriptions say where. Administrators keep the Windows rights standard users lose, such as changing the time or shutting down, and CSVCOP's own configuration is only ever changed by an authenticated CSVCOP administrator.</p></div></details>
+      <details class="acc reveal"><summary>What happens if someone changes a setting back?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>The watchdog service compares every applied control with the encrypted master every 30 seconds, puts back anything that differs, and records a tamper event with the value found and the value restored. A change you make yourself in the application is recognised by its version stamp and is not treated as tampering.</p></div></details>
+      <details class="acc reveal"><summary>Can an operator stop the service or the session agent?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. The agent is created so that a standard user can see it but not end, suspend or tamper with it, and Windows restarts the service after 5, 10 and 30 seconds — treating even a deliberate stop as a failure to recover from. If the master file is deleted it is restored from a protected backup on the next cycle, and the deletion is logged.</p></div></details>
+      <details class="acc reveal"><summary>How is it installed?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>One MSI per workstation, with administrator rights for installation and configuration. Some controls take effect immediately; some at the user's next sign-in or after Explorer restarts, and each control's description says which.</p></div></details>
+    </section>
+
+    <!-- Micro-segmentation -->
+    <section class="group" id="network">
+      <div class="group-head reveal">
+        <span class="eyebrow">Micro-segmentation</span>
+        <h2>Limiting what the workstation talks to</h2>
+      </div>
+      <details class="acc reveal"><summary>What does Micro-segmentation do?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>It lets the administrator decide which programs on the workstation may talk to which machines, and refuses everything else: the PC can be isolated from the rest of its network, the internet limited to named programs, or both. It uses the firewall built into Windows, so nothing is installed in the network path and no switch or VLAN has to change.</p></div></details>
+      <details class="acc reveal"><summary>How do I know which rules a PC needs?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Switch on learning mode for a few days. CSVCOP records every connection the PC makes — program, address, port and protocol — and the Observed traffic tab turns any line into a rule with one click. Presets cover the usual cases: a file share, a database server, a printer, Remote Desktop.</p></div></details>
+      <details class="acc reveal"><summary>Could a wrong rule cut the workstation off?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Not for long, and not without warning. Before a change that tightens the policy is applied, CSVCOP lists the connections seen in the last week that would start failing. Once applied, the change is in force at once but comes back by itself after five minutes unless the administrator commits it. Address assignment, name lookup, time synchronisation, Windows Update and Microsoft's own services stay open under any restriction.</p></div></details>
+      <details class="acc reveal"><summary>What does it record?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Every rule added, changed, enabled, disabled or removed; every policy applied, committed or rolled back; every rule put back after being changed outside CSVCOP; and every connection the policy refused, with the program, the address, the port and the protocol. All of it is in the application log and the Micro-segmentation Activity report, with the account and the time.</p></div></details>
+      <details class="acc reveal"><summary>Does it need changes to our switches, VLANs or firewall?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. The policy is written as rules in the firewall built into Windows on each workstation, and held there by the CSVCOP watchdog. Nothing changes on the switch, the VLANs or the network firewall, so the network team does not have to re-cable or re-segment for a few lab PCs.</p></div></details>
+      <details class="acc reveal"><summary>What keeps Windows working while a restriction is on?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Seven allowances, each a switch of its own: DHCP, DNS, time synchronisation, Windows Update and Microsoft services, the Windows built-in apps, ping and, on a domain-joined PC, the domain services. The local network is the PC&rsquo;s own subnets plus any networks you add.</p></div></details>
+      <details class="acc reveal"><summary>Can a vendor connect only during an agreed window?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Yes. Give the rule a schedule &mdash; daily, weekly or monthly, with a start and an end time &mdash; and it holds only during that window. Outside it the rule shows &ldquo;Not now&rdquo;, and a connection in progress is cut when the window closes. A Remote Desktop rule can be limited to the vendor&rsquo;s one address as well.</p></div></details>
+      <details class="acc reveal"><summary>Does it replace our network firewall?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. It is the workstation's own policy, enforced on the workstation, alongside whatever your network firewall and proxy do. It is most useful where a PC must reach one server and one instrument and nothing else, and where the network itself cannot be changed.</p></div></details>
+    </section>
+
+    <!-- Compliance -->
+    <section class="group" id="compliance">
+      <div class="group-head reveal">
+        <span class="eyebrow">Compliance &amp; evidence</span>
+        <h2>What you can show an auditor</h2>
+      </div>
+      <details class="acc reveal"><summary>What evidence does CSVCOP produce?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Nine reports, each a click from PDF with your logo and the Equipment ID: the User Activity Log, the Control Change History (with the reason given for each control switched off), USB Whitelist Activity, the Audit Trail of every event, and summaries of the controls, the users and the USB whitelist &mdash; plus, with Micro-segmentation, the Micro-segmentation Activity and Policy reports. Tamper events are also mirrored to the Windows Event Log. See the <a href="overview.html#compliance">Part 11 mapping</a> for the detail.</p></div></details>
+      <details class="acc reveal"><summary>Does CSVCOP validate our system for us?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No, and no tool can. CSVCOP controls the Windows workstation and records what happens there, which makes the workstation part of your compliance story simple to prove. It does not validate your instrument software, sign your electronic records or manage your training — your validation protocol and SOPs remain yours.</p></div></details>
+      <details class="acc reveal"><summary>Which <span class="nb">21 CFR Part 11</span> requirements does it address?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>The workstation-level controls and records under § 11.10: protection of records (c), limiting access (d), audit trails (e), operational checks (f), authority checks (g) and device checks (h), with (a), (b) and (k) supported by the reports. The <a href="overview.html#compliance">requirement-by-requirement table</a> also says plainly what remains yours.</p></div></details>
+      <details class="acc reveal"><summary>Our auditor gave us a checklist. Can you map it?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Yes. Send it to us and we will return it with the control numbers filled in; the numbers on the site are the ones shown in the application. A typical laboratory checklist is already mapped under <a href="overview.html#checkpoints">audit checkpoints</a>.</p></div></details>
+      <details class="acc reveal"><summary>Are the logs protected from the operator?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Yes. Masters are encrypted with machine-bound DPAPI, and the log and master folders are writable only by SYSTEM and administrators. Operators can add their blocked-attempt reports but cannot touch the security log itself, and passwords are stored only as salted PBKDF2 hashes.</p></div></details>
+    </section>
+
+    <!-- Licensing -->
+    <section class="group" id="licensing">
+      <div class="group-head reveal">
+        <span class="eyebrow">Licensing &amp; activation</span>
+        <h2>Licences for machines that are never online</h2>
+      </div>
+      <details class="acc reveal"><summary>How do we buy CSVCOP?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Through our authorised distributor, SEK RAW Business Services, who handle quotations, purchase orders, invoicing and renewals. Their contact details are on the <a href="pricing.html">pricing page</a>.</p></div></details>
+      <details class="acc reveal"><summary>Does the workstation ever need internet access?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. Not to run, not to activate, not to renew. The only step that needs a browser is generating the licence on the portal, and that can be done from any device.</p></div></details>
+      <details class="acc reveal"><summary>How does activation work?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary>
+        <div class="acc-body">
+          <p>The workstation shows a machine key. On the licensing portal you paste that key and receive a signed licence key, which you paste back into the workstation. It verifies the signature, the machine and the dates entirely on its own.</p>
+          <div class="keyline">CSVC1-EURZ-FCE3-CFSM-DJXI-RBZP-TY6F-UUOA</div>
+        </div>
+      </details>
+      <details class="acc reveal"><summary>What happens when the licence expires?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Warnings start 30 days before the end date. After it, everything keeps working for 14 days of grace, changes included, with a warning every day. On the 15th day the licence lapses: the service switches every control off, and the USB and network policies with them, until a renewed licence is pasted. Sign-in, viewing and reports keep working; changes are locked. Nothing configured is lost — it all comes back by itself when the renewal is activated. Removing the licence or setting the clock back does not bring the controls back.</p></div></details>
+      <details class="acc reveal"><summary>Can a licence be copied to another PC?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>It can be copied, but it will be refused: the licence names the machine it was issued for, and the workstation compares that with its own identity every time. Altering a date or a module breaks the RSA-2048 signature.</p></div></details>
+      <details class="acc reveal"><summary>What does the machine key reveal about our PC?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Nothing. It is a one-way hash of hardware identifiers; the identifiers cannot be recovered from it.</p></div></details>
+      <details class="acc reveal"><summary>Is a Windows re-install a new machine?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. The identity is taken from hardware that survives a re-install; only a motherboard change or a cloned virtual machine produces a new key. Request a replacement on the portal and the seat moves to the new key.</p></div></details>
+      <details class="acc reveal"><summary>Can an operator extend the licence by changing the clock?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. The service records the latest time it has seen and treats a clock set back more than a day as tampering; CSVCOP's own controls can also remove the operator's right to change the time at all.</p></div></details>
+      <details class="acc reveal"><summary>Is there a limit on CSVCOP user accounts?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>No. A licence covers a workstation, not a number of people: add the administrators you need, each with an account of their own in the audit trail.</p></div></details>
+      <details class="acc reveal"><summary>Which modules does a licence include?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Every licence includes <span class="nb">21 CFR Part 11</span> Controls. Micro-segmentation is ordered for every workstation or for a set number of them, and the licence key of each PC names the modules it has.</p></div></details>
+      <details class="acc reveal"><summary>Can we add Micro-segmentation later, or to some PCs only?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary><div class="acc-body"><p>Yes. Order it for the number of workstations that need it; customers then give machines the module themselves from the licensing portal, within the seats they bought. Once a machine has the module, only your supplier can take it off. The 15-day trial can include it.</p></div></details>
+      <details class="acc reveal"><summary>What does each licence state mean for the workstation?<span class="chev"><svg class="i"><use href="#i-chevron"/></svg></span></summary>
+        <div class="acc-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>State</th><th>Shown as</th><th>Effect</th></tr></thead>
+              <tbody>
+                <tr><td>Valid</td><td><span class="tag green">Licensed until …</span></td><td>Everything available.</td></tr>
+                <tr><td>Expiring soon</td><td><span class="tag amber">Expires in N days</span></td><td>Everything available; warning from 30 days out.</td></tr>
+                <tr><td>Not yet started</td><td><span class="tag amber">Starts on …</span></td><td>Accepted at activation; changes locked until the start date.</td></tr>
+                <tr><td>Expired, in grace</td><td><span class="tag amber">Renew within N days</span></td><td>For 14 days after the end date everything keeps working, changes included, with a warning every day.</td></tr>
+                <tr><td>Lapsed</td><td><span class="tag red">Controls switched off</span></td><td>From the 15th day after the end date every control is switched off, the USB and network policies too. Sign-in, viewing and reports work; configuration, users and the USB whitelist are locked. The configuration is kept and comes back by itself when a renewed licence is pasted; removing the licence or setting the clock back does not bring it back.</td></tr>
+                <tr><td>Not activated</td><td><span class="tag red">Not activated</span></td><td>Changes locked; what is already applied stays in force, unless a lapse switched it off. Paste a licence to activate.</td></tr>
+                <tr><td>Wrong machine</td><td><span class="tag red">Another machine</span></td><td>Refused at activation with the reason.</td></tr>
+                <tr><td>Clock set back</td><td><span class="tag red">Clock problem</span></td><td>Changes locked and the event logged until the clock is corrected.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+  </div>
+
+  <section class="container" style="margin-top: 70px;">
+    <div class="cta reveal-zoom">
+      <h2>Still have a question?</h2>
+      <p>Ask us directly, or bring the checkpoint your auditor raised and we will show you the control that answers it.</p>
+      <div class="hero-actions">
+        <a class="btn btn-light btn-lg" href="contact.html">Get in touch <svg class="i arrow"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-outline-light btn-lg" href="pricing.html">Pricing</a>
+      </div>
+    </div>
+  </section>

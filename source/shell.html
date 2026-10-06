@@ -12,10 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/website.css" />
     <link rel="stylesheet" href="css/demo.css" />
+    <link rel="stylesheet" href="css/motion.css" />
     <script>document.documentElement.className += " js";</script>
 </head>
 <body class="page-glow">
 {{SPRITE}}
+<div class="scroll-progress" aria-hidden="true"></div>
 <header class="site-header">
     <div class="container nav">
         <a class="logo" href="index.html" aria-label="CSVCOP home">
@@ -23,21 +25,21 @@
             <span>CSVCOP<small>COMPLIANCE CHECKLIST</small></span>
         </a>
         <nav class="nav-links" id="navLinks" aria-label="Main">
-            <a href="index.html" class="{{ON_HOME}}">Home</a>
-            <a href="products.html" class="{{ON_PRODUCTS}}">Products</a>
-            <a href="{{SITE}}/overview">Overview</a>
-            <a href="{{SITE}}/features">Features</a>
-            <a href="{{SITE}}/pricing">Pricing</a>
-            <a href="{{SITE}}/faq">FAQ</a>
-            <a href="{{SITE}}/contact">Contact</a>
+            <a href="index.html" class="{{ON_index}}">Home</a>
+            <a href="products.html" class="{{ON_products}}">Products</a>
+            <a href="overview.html" class="{{ON_overview}}">Overview</a>
+            <a href="features.html" class="{{ON_features}}">Features</a>
+            <a href="pricing.html" class="{{ON_pricing}}">Pricing</a>
+            <a href="faq.html" class="{{ON_faq}}">FAQ</a>
+            <a href="contact.html" class="{{ON_contact}}">Contact</a>
             <div class="nav-drawer-cta">
-                <a class="btn btn-primary" href="{{SITE}}/contact">Get in touch</a>
-                <a class="btn btn-ghost" href="{{SITE}}/Account/Login">Login</a>
+                <a class="btn btn-primary" href="contact.html">Get in touch</a>
+                <a class="btn btn-ghost" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
             </div>
         </nav>
         <div class="nav-cta">
-            <a class="btn btn-primary btn-sm" href="{{SITE}}/contact">Get in touch</a>
-            <a class="btn btn-ghost btn-sm" href="{{SITE}}/Account/Login">Login</a>
+            <a class="btn btn-primary btn-sm" href="contact.html">Get in touch</a>
+            <a class="btn btn-ghost btn-sm" href="#portal" data-demo-title="Customer portal" data-demo-note="Customers sign in here to the licensing portal, to add machines and get licence keys. The portal is not part of this website demo.">Login</a>
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
         </div>
     </div>
@@ -69,11 +71,11 @@
             <div>
                 <h4>Explore</h4>
                 <ul>
-                    <li><a href="{{SITE}}/overview">Overview</a></li>
-                    <li><a href="{{SITE}}/features">Features</a></li>
-                    <li><a href="{{SITE}}/pricing">Pricing</a></li>
-                    <li><a href="{{SITE}}/faq">FAQ</a></li>
-                    <li><a href="{{SITE}}/contact">Contact</a></li>
+                    <li><a href="overview.html">Overview</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="features.html#controls">All 97 controls</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
             <div>
@@ -81,7 +83,7 @@
                 <ul>
                     <li>Corporate Office<br />C 206, 2nd Floor, Business Park<br />PDPU Road, Raysan<br />Gandhinagar, Gujarat 382421, India</li>
                     <li><a href="mailto:sales&#64;databricks.online">sales&#64;databricks.online</a></li>
-                    <li>Pricing &amp; purchase: <a href="{{SITE}}/pricing">SEK RAW Business Services</a></li>
+                    <li>Pricing &amp; purchase: <a href="pricing.html">SEK RAW Business Services</a></li>
                 </ul>
             </div>
         </div>
@@ -94,5 +96,6 @@
 
 <div class="demo-badge">DEMO<span>not the live site</span></div>
 <script src="js/website.js"></script>
+<script src="js/motion.js"></script>
 </body>
 </html>
