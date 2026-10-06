@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}} &middot; CSVCOP</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/website.css" />
+    <link rel="stylesheet" href="css/demo.css" />
+    <script>document.documentElement.className += " js";</script>
+</head>
+<body class="page-glow">
+{{SPRITE}}
+<header class="site-header">
+    <div class="container nav">
+        <a class="logo" href="index.html" aria-label="CSVCOP home">
+            <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="44" height="44" />
+            <span>CSVCOP<small>COMPLIANCE CHECKLIST</small></span>
+        </a>
+        <nav class="nav-links" id="navLinks" aria-label="Main">
+            <a href="index.html" class="{{ON_HOME}}">Home</a>
+            <a href="products.html" class="{{ON_PRODUCTS}}">Products</a>
+            <a href="{{SITE}}/overview">Overview</a>
+            <a href="{{SITE}}/features">Features</a>
+            <a href="{{SITE}}/pricing">Pricing</a>
+            <a href="{{SITE}}/faq">FAQ</a>
+            <a href="{{SITE}}/contact">Contact</a>
+            <div class="nav-drawer-cta">
+                <a class="btn btn-primary" href="{{SITE}}/contact">Get in touch</a>
+                <a class="btn btn-ghost" href="{{SITE}}/Account/Login">Login</a>
+            </div>
+        </nav>
+        <div class="nav-cta">
+            <a class="btn btn-primary btn-sm" href="{{SITE}}/contact">Get in touch</a>
+            <a class="btn btn-ghost btn-sm" href="{{SITE}}/Account/Login">Login</a>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+        </div>
+    </div>
+</header>
+
+<main>
+{{BODY}}
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="foot-grid">
+            <div>
+                <a class="logo" href="index.html">
+                    <img class="logo-mark" src="img/csvcop-mark.png" alt="" width="44" height="44" />
+                    <span>CSVCOP<small>COMPLIANCE CHECKLIST</small></span>
+                </a>
+                <p>Two modules for regulated laboratory workstations: <span class="nb">21 CFR Part 11</span> Controls, which locks Windows down and keeps it that way, and Micro-segmentation, which decides which programs may talk to which machines &mdash; by DataBricks Technologies.</p>
+            </div>
+            <div>
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="products.html#part11"><span class="nb">21 CFR Part 11</span> Controls</a></li>
+                    <li><a href="products.html#micro-segmentation">Micro-segmentation</a></li>
+                    <li><a href="products.html#coverage">What each module covers</a></li>
+                    <li><a href="products.html#licensing">Licensing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="{{SITE}}/overview">Overview</a></li>
+                    <li><a href="{{SITE}}/features">Features</a></li>
+                    <li><a href="{{SITE}}/pricing">Pricing</a></li>
+                    <li><a href="{{SITE}}/faq">FAQ</a></li>
+                    <li><a href="{{SITE}}/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Get in touch</h4>
+                <ul>
+                    <li>Corporate Office<br />C 206, 2nd Floor, Business Park<br />PDPU Road, Raysan<br />Gandhinagar, Gujarat 382421, India</li>
+                    <li><a href="mailto:sales&#64;databricks.online">sales&#64;databricks.online</a></li>
+                    <li>Pricing &amp; purchase: <a href="{{SITE}}/pricing">SEK RAW Business Services</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="foot-bottom">
+            <span>&copy; 2026 DataBricks Technologies. All rights reserved.</span>
+            <span>CSVCOP supports, and does not replace, your computer-system validation.</span>
+        </div>
+    </div>
+</footer>
+
+<div class="demo-badge">DEMO<span>not the live site</span></div>
+<script src="js/website.js"></script>
+</body>
+</html>
